@@ -5,7 +5,7 @@ import axios from "axios";
 // make api call
 export const userLoginLifeCycle = createAsyncThunk("login", async (userCredObj, { rejectWithValue }) => {
     let res = await axios.post("http://localhost:4000/user/login", userCredObj)
-    console.log("res is ", res)
+    // console.log("res is ", res)
     // save token in local storage
     if (res.data.message === "success") {
         localStorage.setItem("token", res.data.token)
@@ -34,7 +34,7 @@ export const userLoginSlice = createSlice({
             state.isPending = true
         },
         [userLoginLifeCycle.fulfilled]: (state, action) => {
-            console.log("actino obj in fullfilled", action)
+            // console.log("actino obj in fullfilled", action)
             state.userObj = action.payload.user;
             state.isSuccess = true;
             state.isPending = false;

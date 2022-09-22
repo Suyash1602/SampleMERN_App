@@ -6,6 +6,8 @@ import About from './components/About';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import UserProfile from './components/UserProfile/UserProfile';
+import Products from './components/products/Products'
+import Cart from './components/Cart'
 import { useSelector, useDispatch } from 'react-redux'
 import { clearState } from './store/slices/userLoginSlice';
 
@@ -37,9 +39,17 @@ function App() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                {isSuccess ? < li className="nav-item px-3">
-                  <NavLink onClick={userLogOut} className="nav-link fw-bold" aria-current="page" to="/signin">Sign Out</NavLink>
-                </li> :
+                {isSuccess ? <>
+                  <li className="nav-item px-3">
+                    <NavLink className="nav-link fw-bold" aria-current="page" to="/products">Products</NavLink>
+                  </li>
+                  <li className="nav-item px-3">
+                    <NavLink className="nav-link fw-bold" aria-current="page" to="/cart">Cart</NavLink>
+                  </li>
+                  <li className="nav-item px-3">
+                    <NavLink onClick={userLogOut} className="nav-link fw-bold" aria-current="page" to="/signin">Sign Out</NavLink>
+                  </li>
+                </> :
                   <>
 
 
@@ -85,6 +95,10 @@ function App() {
           <Route path='/signup' element={<SignUp />} />
           {/* Creating route for userprofile */}
           <Route path='/userprofile/:username' element={<UserProfile />} />
+          {/* Creatrin route for products */}
+          <Route path='/products' element={<Products />} />
+          {/* Creatrin route for cart */}
+          <Route path='/cart' element={<Cart />} />
         </Routes>
 
         {/* footer */}
